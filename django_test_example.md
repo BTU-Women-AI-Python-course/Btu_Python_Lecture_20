@@ -70,34 +70,7 @@ urlpatterns = [
 ]
 ```
 
-### 5. Fixtures
-
-Create a fixture file containing initial data for your tests.
-
-**File: `yourapp/fixtures/product_fixture.json`**
-
-```json
-[
-    {
-        "model": "yourapp.product",
-        "pk": 1,
-        "fields": {
-            "title": "Product 1",
-            "price": "10.00"
-        }
-    },
-    {
-        "model": "yourapp.product",
-        "pk": 2,
-        "fields": {
-            "title": "Product 2",
-            "price": "15.00"
-        }
-    }
-]
-```
-
-### 6. Testing
+### 5. Testing
 
 Create a test case that utilizes `TestCase`, assertions, fixtures, and the client.
 
@@ -134,7 +107,7 @@ class ProductListTests(TestCase):
         self.assertEqual(response.data, serializer_data)
 ```
 
-### 7. Running the Tests
+### 6. Running the Tests
 
 To run the tests, execute the following command in your terminal:
 
