@@ -138,7 +138,7 @@ In Django, when you run tests, a separate test database is automatically created
    - Each test runs within a transaction that is rolled back at the end of the test. This means that any changes made to the database during a test are undone, keeping the database clean for subsequent tests.
 
 4. **Fixtures and Data**:
-   - You can load fixtures into the test database using the `fixtures` attribute in your test case, or you can create data in the `setUp` method as shown in the previous example.
+   - You can load fixtures into the test database using the `fixtures` attribute in your test case, or you can create data in the `setUp` method.
 
 5. **Speed**:
    - Since tests often create and destroy data frequently, having a separate test database speeds up testing by preventing clutter in your development or production database.
