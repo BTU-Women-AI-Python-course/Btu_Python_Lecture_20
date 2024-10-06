@@ -12,7 +12,7 @@ Define a `Product` model in your application.
 from django.db import models
 
 class Product(models.Model):
-    name = models.CharField(max_length=100)
+    title = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -82,7 +82,7 @@ Create a fixture file containing initial data for your tests.
         "model": "yourapp.product",
         "pk": 1,
         "fields": {
-            "name": "Product 1",
+            "title": "Product 1",
             "price": "10.00"
         }
     },
@@ -90,7 +90,7 @@ Create a fixture file containing initial data for your tests.
         "model": "yourapp.product",
         "pk": 2,
         "fields": {
-            "name": "Product 2",
+            "title": "Product 2",
             "price": "15.00"
         }
     }
@@ -113,8 +113,8 @@ class ProductListTests(TestCase):
 
     def setUp(self):
         # Create initial test data
-        Product.objects.create(name='Product 1', price=10.00)
-        Product.objects.create(name='Product 2', price=15.00)
+        Product.objects.create(title='Product 1', price=10.00)
+        Product.objects.create(title='Product 2', price=15.00)
 
     def test_product_list_api(self):
         # Use the test client to simulate a GET request to the product list API
@@ -125,8 +125,8 @@ class ProductListTests(TestCase):
 
         # Assert that the response contains the expected products
         self.assertEqual(len(response.data), 2)  # Check the number of products
-        self.assertEqual(response.data[0]['name'], 'Product 1')
-        self.assertEqual(response.data[1]['name'], 'Product 2')
+        self.assertEqual(response.data[0]['title'], 'Product 1')
+        self.assertEqual(response.data[1]['title'], 'Product 2')
 
         # Assert that the response data matches the products in the database
         products = Product.objects.all()
