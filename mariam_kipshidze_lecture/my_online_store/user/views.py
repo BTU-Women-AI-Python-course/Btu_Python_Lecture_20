@@ -1,14 +1,20 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from rest_framework.authtoken.admin import User
+from rest_framework.viewsets import GenericViewSet
+
 from user.forms import CustomUserCreationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
 
-from rest_framework import generics, status
+from rest_framework import generics, status, mixins
 from rest_framework.response import Response
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
+
+from user.serializers import UserRegisterSerializer
+
 
 def register(request):
     if request.method == 'POST':
@@ -66,3 +72,7 @@ class CustomAuthToken(generics.GenericAPIView):
             'user_id': user.pk,
             'email': user.email
         }, status=status.HTTP_200_OK)
+
+class UserRegister(mixins.CreateModelMixin, GenericViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserRegisterSerializer
