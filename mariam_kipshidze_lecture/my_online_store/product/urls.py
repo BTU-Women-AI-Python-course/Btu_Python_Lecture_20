@@ -5,7 +5,7 @@ from product.views import ProductViewSet, ProductCreateListDetailViewSet
 
 router = SimpleRouter()
 router.register(r'products', ProductViewSet, basename='products')
-router.register(r'products_2', ProductCreateListDetailViewSet, basename='products_2')
+router.register(r'product', ProductCreateListDetailViewSet, basename='products_2')
 
 urlpatterns = [
     path('', include(router.urls))

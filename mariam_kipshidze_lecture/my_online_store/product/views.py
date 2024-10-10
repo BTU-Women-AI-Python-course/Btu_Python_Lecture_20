@@ -1,3 +1,4 @@
+from django.core.serializers import serialize
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets, mixins
 from rest_framework.decorators import action
@@ -9,7 +10,7 @@ from product.filters import ProductFilter
 from product.models import Product
 from product.pagination import SmallPageNumberPagination, ProductLimitOffsetPagination, ProductCursorPagination
 from product.serializers import ProductSerializer, MutateProductSerializer, CreateProductSerializer, \
-    ProductDynamicFieldsSerializer
+    ProductDynamicFieldsSerializer, ProductListSerializer
 from user.permissiopns import IsActiveUser
 
 
@@ -64,4 +65,9 @@ class ProductCreateListDetailViewSet(
     def product_data(self, request, *args, **kwargs):
         product = self.get_object()
         serializer = self.get_serializer(product)
+        return Response(serializer.data)
+
+    @action(detail=False, methods=['get'], permission_classes=[], serializer_class=ProductListSerializer)
+    def product_list(self, request, *args, **kwargs):
+        serializer = self.get_serializer(self.queryset.order_by('id'), many=True)
         return Response(serializer.data)
