@@ -6,6 +6,12 @@ This section covers the fundamentals of writing and running tests in Django to e
   - Understand the importance of testing in Django applications and familiarize yourself with the Django testing framework.
 - **Writing Tests** - https://docs.djangoproject.com/en/5.1/topics/testing/overview/:
   - Learn how to write unit tests and integration tests for your Django applications, ensuring that your code functions correctly and as expected.
+ 
+---
+🌐 Additional sources
+- **Factory boy** - https://factoryboy.readthedocs.io/en/stable/
+
+---
     
 ## 📚 Task: Write Unit and Integration Tests for a Django Application
 
