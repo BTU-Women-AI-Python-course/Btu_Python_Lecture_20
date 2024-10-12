@@ -40,6 +40,9 @@ INSTALLED_APPS = [
 
     # My apps
     "books",
+
+    # Third-party
+    "rest_framework",
 ]
 
 MIDDLEWARE = [
